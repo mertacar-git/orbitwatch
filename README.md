@@ -1,5 +1,27 @@
 # OrbitWatch
 
+[Live browser demo](https://mertacar-git.github.io/orbitwatch/) · [Portfolio laboratory](https://mertacar-git.github.io/portfolio/lab/index.html?project=orbitwatch)
+
+<details>
+<summary>Actual application screenshot</summary>
+
+![Application screenshot](docs/screenshot.jpg)
+
+</details>
+
+## Browser and local editions
+
+The public browser demo runs JavaScript models on-device. The local application uses Python and Streamlit. JavaScript numerical/protocol outputs are checked against committed Python reference fixtures. Satellite.js 6.0.1 is bundled with its license; no runtime CDN is required. Uploaded CSV data is processed locally in the browser.
+
+Browser orbit crossings use sampling and bisection, with sampled culmination times; local Skyfield uses its event search. Browser rocket inputs use constant thrust; local Python also supports uploaded thrust curves. Browser wing coefficients are fixed to CD0=0.025 and CLmax=1.2; local Python exposes these and a span sweep. Browser telemetry has CSV/JSON analysis; local Python additionally groups alert intervals.
+
+```sh
+node --test docs/models.test.cjs
+```
+
+Serve `docs/` with any static server to run the browser edition locally. Example: `python -m http.server 8000 --directory docs`. Open http://localhost:8000.
+
+
 Fetch ISS orbital elements from CelesTrak or paste any valid three-line TLE. View predicted positions and observer horizon events.
 
 ## Features
